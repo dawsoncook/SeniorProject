@@ -16,9 +16,16 @@ nav{
 
 .title{
     color: rgb(212, 212, 212);
-    font-size: 20px;
+    font-size: 18px;
 }
 
+
+.title2{
+  position: absolute;
+  bottom: 3%;
+  right: 53%;
+  font-size: 8px;
+}
 
 .nav-links{
     display: flex;
@@ -31,7 +38,7 @@ nav{
     color: rgb(212, 212, 212);
     text-decoration: none;
     text-align: center;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .nav-links li{
@@ -41,7 +48,7 @@ nav{
 .dropbtn {
     background-color: #cc5500;
     color: rgb(212, 212, 212);
-    font-size: 16px;
+    font-size: 15px;
     border: none;
     cursor: pointer;
   }
@@ -65,9 +72,11 @@ nav{
   
   .dropdown-content a {
     color: black;
-    padding: 12px 16px;
+    padding: 10px 14px;
     text-decoration: none;
     display: block;
+    text-align: left;
+    font-size: 15px;
   }
   
   .dropdown a:hover {background-color: #ddd;}
