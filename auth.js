@@ -1,10 +1,20 @@
+//listen for auth status changes
+auth.onAuthStateChanged(user => {
+    console.log(user)
+    if (user){
+        setupUI(user);
+        console.log('user logged in: ', user);
+    }else{
+        setupUI();
+        console.log('user logged out');
+    }
+})
+
 //logout method
 const logout = document.querySelector('#logout');
 logout.addEventListener('click', (e) => {
     e.preventDefault();
-    auth.signOut().then(() => {
-        console.log('user signed out');
-    });
+    auth.signOut()
 });
 
 
@@ -19,12 +29,12 @@ loginForm.addEventListener('submit', (e) => {
     const password = loginForm['login-password'].value;
 
     auth.signInWithEmailAndPassword(email, password).then(cred => {
-        console.log(cred.user)
         //close modal and reset form
         const modal = document.querySelector('#modal-login');
-        M.Modal.getInstance(modal).close();
         loginForm.reset();
+        
     });
+
 })
 
-//need to clear modal on close
+//need to clear modal on close and alert id wrong email

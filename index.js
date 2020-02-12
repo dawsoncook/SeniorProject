@@ -1,8 +1,18 @@
-// document.addEventListener('DOMContentLoaded', function() {
-//     var modals = document.querySelectorAll('.modal');
-//     M.Modla.init(modals)
+//checks class for logged-in and logged-out and displays accordingly
+const loggedOutLinks = document.querySelectorAll('.logged-out');
+const loggedInLinks = document.querySelectorAll('.logged-in');
 
-// });
+const setupUI = (user) => {
+  if(user){
+    loggedInLinks.forEach(item => item.style.display = 'block');
+    loggedOutLinks.forEach(item => item.style.display = 'none');
+
+  }else{
+    loggedInLinks.forEach(item => item.style.display = 'none');
+    loggedOutLinks.forEach(item => item.style.display = 'block');
+  }
+}
+
 
 // Get the modal
 var modal = document.getElementById("modal-login");
@@ -29,3 +39,4 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+

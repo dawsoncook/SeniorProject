@@ -7,29 +7,26 @@
     <link rel="stylesheet" href="index.CSS">
     <link rel="stylesheet" href="login.CSS">
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-    <title>Stephen Laby Lessons</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     
   </head>
 <body>
     <Nav>
-        <div class="title">
-            <h1>Stephen Labay Baseball Lessons</h1>
-        </div>
-    
+      <a class="title" id="title" >Stephen Labay Hitting Lessons</a>
         <ul class ="nav-links">
-           <li class="logged-in">
+           <li>
                 <a href="index.html">Home</a>
             </li>
         
-            <li class="logged-in">
+            <li>
                 <a href="Schedule_Lesson.html">Schedule a Lesson</a>
             </li>
         
-            <li class="logged-in">
+            <li>
                 <a href="Weekly_Lessons.html">Weekly Lessons</a>
             </li>
         
-            <li class="logged-in">
+            <li>
               <div class="dropdown">
                   <button onclick="myFunction()" class="dropbtn">Former Players</button>
                   <div id="myDropdown" class="dropdown-content">
@@ -39,11 +36,11 @@
               </div>
              </li>
           
-             <li class="logged-out">
+             <li class="logged-out" style="display: none;">
                 <a href="#" id="loginbtn" class="modal-trigger" data-target="modal-login">login</a>
              </li>
              
-             <li class="logged-in">
+             <li class="logged-in" style="display: none;"> 
               <a href="#" id="logout">logout</a> 
              </li>
          
@@ -64,7 +61,7 @@
           <label for="login-password">Your Password</label>
           <input type="password" id="login-password" required />
          </div>
-         <button class="btn">Login</button>
+         <button id="btnSave" type="submit" class="btn btn-success" data-dismiss="modal">Login</button>
        </form>
      </div>
    </div>
@@ -76,6 +73,43 @@
   <video autoplay muted loop id="myVideo" width="800" height="600">
     <source src="IMG_1375.mp4" type="video/mp4">
   </video>
+
+  <h5>Meet Stephen Labay</h5>
+  
+  <img src="Scan 110640001.jpeg" id="bioimg" alt="bio pic" style="width:500px;height:600px;">
+  
+  <p class="bio">Stephen Labay is a Angleton High School 4-year letterman in Baseball, with All-
+    District honors 1978, 1979, and 1980.
+    
+    <br><br>After graduation he attended Angelina Junior College in Lufkin, named All-
+    Conference Baseball Team in 1981 and 1982
+    
+    <br><br>Stephen went on to play at the University of Texas at Austin, named to the All-
+    Region team in 1983 and 1984. He was a member of the 1983 College World
+    Series Championship Team, and Co-Captain of the runner up College World Series
+    team in 1984.
+    
+    <br><br>Stephen played the positions of Pitcher, First Baseman, and Outfielder throughout
+    his high school and collegiate career.
+    
+    <br><br>He graduated with a BBA degree in Business Management. Stephen continued his
+    baseball career as a professional pitcher with the Philadelphia Phillies
+    Organization.
+    
+    <br><br>Upon retirement from baseball Stephen worked as a sales manager for Blue Bell
+    Creameries for 8 years before he transitioned back into baseball as an instructor.
+    
+    <br><br>He has been teaching baseball for the past 25 years; working with players at
+    youth, college, and professional levels.
+    
+    <br><br>In 2010 and 2012 Stephen served as the hitting coach for the Swedish National
+    team in the European baseball League.
+    
+    <br><br>Also in 2010 he was inducted to Angleton High School Wildcat Hall of Fame for his
+    achievements both on and off the field.
+    
+    <br><br>Stephen and his wife Carla have been married for over 30 years and reside in
+    Austin with their 2 dogs Doc and Schultz.</p>
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
