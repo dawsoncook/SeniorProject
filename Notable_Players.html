@@ -1,1 +1,152 @@
-hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.CSS">
+    <link rel="stylesheet" href="login.CSS">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+  </head>
+<body>
+    <Nav>
+      <a class="title" id="title" >Stephen Labay Hitting Lessons</a>
+        <ul class ="nav-links">
+           <li>
+                <a href="index.html">Home</a>
+            </li>
+        
+            <li>
+                <a href="Schedule_Lesson.html">Schedule a Lesson</a>
+            </li>
+        
+            <li>
+                <a href="Weekly_Lessons.html">Weekly Lessons</a>
+            </li>
+        
+            <li>
+              <div class="dropdown">
+                  <button onclick="myFunction()" class="dropbtn">Former Players</button>
+                  <div id="myDropdown" class="dropdown-content">
+                    <a href="Reviews.html">Reviews</a>
+                    <a href="Notable_Players.html">Notable Alumni</a>
+                  </div>
+              </div>
+             </li>
+          
+             <li class="logged-out" style="display: none;">
+                <a href="#" id="loginbtn" class="modal-trigger" data-target="modal-login">login</a>
+             </li>
+             
+             <li class="logged-in" style="display: none;"> 
+              <a href="#" id="logout">logout</a> 
+             </li>
+         
+          </ul>
+        
+      </Nav>
+
+   <div id="modal-login" class="modal">
+     <div class="modal-content">
+      <span class="close">&times;</span>
+       <h4>Login</h4>
+       <form id="login-form">
+         <div class="input-field">
+          <label for="login-email">Email Address</label>
+          <input type="email" id="login-email" required />
+         </div>
+         <div class="input-field">
+          <label for="login-password">Your Password</label>
+          <input type="password" id="login-password" required />
+         </div>
+         <button id="btnSave" type="submit" class="btn btn-success" data-dismiss="modal">Login</button>
+       </form>
+     </div>
+   </div>
+   
+   <div class="col-lg-12">
+       <div class="container" id="container">
+           <!-----------post pic starts -------------->
+           <div class="jumbotron bg-dark">
+               <div class="container text-center">
+                   <form id="main-form">
+                       <div class="form-group">
+                           <textarea name="text" rows="5" placeholder="caption" class="form-control" id="main-desc">
+                           </textarea>
+                       </div>
+                       <div class="form-group">
+                           <input type="file" class="form-control" id="main-image" />
+                           <div class="invalid-feedback">
+                               please choose valid pic
+                            </div>
+                       </div>
+                       <div class="form-group">
+                           <img id="selected-image" width="250" height="150" src="#" />
+
+                       </div>
+                       <div class="form-group">
+                           <div class="progress bg-secondary">
+                                <div class="progress-bar bg-success" id="upload-progress" style="width: 0%;"></div>
+                           </div>
+
+                       </div>
+                       <div class="form-group">
+                            <button id="save-blog" type="button" style="width: 150px; height: 60px;" class="btn btn-light bg-light text-dark">Submit</button>
+                       </div>
+                   </form>
+                   <div id="result">
+
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+   
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  
+  <!-- This line below loads everything -->
+  <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase.js"></script>
+  
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-auth.js"></script> -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-firestore.js"></script> -->
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDBkICQCt53H1_cPbigFC_BuM8nFlYdQS8",
+      authDomain: "baseball-lessons-a5e57.firebaseapp.com",
+      databaseURL: "https://baseball-lessons-a5e57.firebaseio.com",
+      projectId: "baseball-lessons-a5e57",
+      storageBucket: "baseball-lessons-a5e57.appspot.com",
+      messagingSenderId: "304091917830",
+      appId: "1:304091917830:web:8a039bc3327615416add87",
+      measurementId: "G-L3PJ9XHT64"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  
+    //make auth and firestore referneces
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+  
+  
+  </script>
+
+
+  
+  <script src="scripts/dropdown.js"></script>
+  <script src="scripts/index.js"></script>
+  <script src="scripts/auth.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
