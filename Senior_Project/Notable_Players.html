@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="login.CSS">
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"></script>
   </head>
 <body>
   <Nav>
@@ -70,6 +70,9 @@
     <div class="container" id="container">
            <!-----------post pic starts -------------->
       <div class="jumbotron bg-dark" style="margin-top: 15px;">
+        <script>
+          var counter = 0;
+        </script>
         <div class="container text-center">
           <form id="main-form">
             <div class="form-group">
@@ -178,14 +181,19 @@
     $("#selected-image").hide();
 
     function previewImage(image_pic){
+      if(image_pic.files && image_pic.files[0]){
+        
         var reader = new FileReader();
         reader.onload = function(e){
             $("#selected-image").attr('src', e.target.result);
             $("#selected-image").fadeIn();
 
         }
-
         reader.readAsDataURL(image_pic.files[0]);
+
+      }
+
+        
     }
 
     $("#main-image").change(function(){
@@ -204,7 +212,7 @@
             return;
         }
 
-        if(!picture == null){
+        if(picture == null){
             $("#main-image").addClass("is-invalid");
             return;
         }
@@ -214,12 +222,96 @@
             return;
         }
 
+
+            // upload and save to firebase storage and firebase DB
+        var databaseRef = firebase.database().ref().child("Images");
+
+        databaseRef.once("value").then(function(snapshot){
+        
+          var name = picture["name"];
+          var dateStr = new Date().getTime();
+          var fileCompleteName = name + "_" + dateStr;
+
+          var storageRef = firebase.storage().ref("Pics");
+          var blogStorageRef = storageRef.child(fileCompleteName);
+
+          var uploadTask = blogStorageRef.put(picture);
+
+          uploadTask.on("state_changed", 
+            
+            function progress(snapshot)
+            {
+            var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            
+            $("#upload-progress").html(Math.round(percentage) + "%");
+            $("#upload-progress").attr("style", "width:" + percentage + "%");
+
+            
+          },
+          function error(error){
+
+          },
+          function complete(){
+            uploadTask.snapshot.ref.getDownloadURL().then(function(downloadUrl){
+              var time = new Date();
+
+              var options = {
+                weekday: "long",
+                month: "long",
+                day: "2-digits",
+                year: "numeric",
+              };
+
+              var picData = {
+                
+                "image": downloadUrl,
+                "name": fileCompleteName,
+                "desc": desc,
+                
+              };
+
+              var newPostRef = databaseRef.push();
+
+              newPostRef.set(picData, function(err){
+                if(err){
+                  
+                  $("#result").attr("class", "alert alert-danger");
+                  $("#result").html(err.message);
+
+                }
+                else{
+                  
+                  $("#result").attr("class", "alert alert-danger");
+                  $("#result").html("Image has been posted");
+
+                  window.open("", "_self");
+
+                }
+             
+              });
+            
+            });
+          
+          }
+        
+        );
+
+      });
+    // upload and save to firebase storage and firebase DB
+
     });
+
+    function resetForm(){
+      
+      $("#main-form")[0].reset();
+      $("#selected-image").fadeOut();
+      $("#upload-progress").html("done");
+
+    }
 
   </script>
 
 
-  <script src="scripts/image.js.js"></script>
   <script src="scripts/dropdown.js"></script>
   <script src="scripts/index.js"></script>
   <script src="scripts/auth.js"></script>
