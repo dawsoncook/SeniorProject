@@ -267,6 +267,7 @@
                 "image": downloadUrl,
                 "name": fileCompleteName,
                 "desc": desc,
+                "counter": 5000 - counter
                 
               };
 
@@ -287,6 +288,7 @@
                   window.open("", "_self");
 
                 }
+                resetForm();
              
               });
             
@@ -301,6 +303,7 @@
 
     });
 
+    
     function resetForm(){
       
       $("#main-form")[0].reset();
@@ -308,6 +311,38 @@
       $("#upload-progress").html("done");
 
     }
+
+    //***************** Retreive and display data from Firebase ***********
+
+    var dbPics = firebase.database().ref().child("Images").orderByChild("counter");
+
+    dbPics.on("value", function(pics){
+      if(pics.exists()){
+        var picsHtml = "";
+        
+        pics.forEach(function(singlePic){
+          counter = counter + 1;
+          
+          picsHtml += "<div class = 'jumbotron bg-light text-dark border border-dark'>";
+            
+            picsHtml += "<div> <img width= '800px' height = '450px' src = '";
+              picsHtml += singlePic.val().image;
+            picsHtml += "'/></div> <br>";
+            
+            picsHtml += "<div style = 'text-center: justify; color: black;'>";
+              picsHtml += singlePic.val().desc;
+            picsHtml += "</div> <br>";
+          picsHtml += "</div>";
+        });
+
+        $("#blogs").html(picsHtml);
+
+      }
+
+
+    });
+
+    //***************** Ends here -- Retreive and display data from Firebase ***********
 
   </script>
 
