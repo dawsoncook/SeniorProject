@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="index.CSS">
     <link rel="stylesheet" href="login.CSS">
+    <link rel="stylesheet" href="NotablePlayers.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"></script>
@@ -66,6 +67,30 @@
      </div>
    </div>
    
+  
+<!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="text" id="NewDesc" placeholder="Description" required />
+         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" onclick="updateFirebase()" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+ 
   <div class="col-lg-12">
     <div class="container" id="container">
            <!-----------post pic starts -------------->
@@ -76,19 +101,19 @@
         <div class="container text-center">
           <form id="main-form">
             <div class="form-group">
-              <textarea name="text" rows="5" placeholder="caption" class="form-control" id="main-desc"></textarea>
+              <textarea name="text" rows="2" placeholder="caption" class="form-control" id="Notable-desc"></textarea>
                 <div class="invalid-feedback">
                    please write description
                   </div>
               </div>
               <div class="form-group">
-                <input type="file" class="form-control" id="main-image" />
+                <input type="file" class="form-control" id="Notable-image" />
                   <div class="invalid-feedback">
                     please choose valid pic
                     </div>
                 </div>
               <div class="form-group">
-                <img id="selected-image" width="250" height="150" src="#" />
+                <img id="selected-image" width="500" height="150" src="#" />
 
                 </div>
               <div class="form-group">
@@ -114,14 +139,14 @@
                <hr>
                <br><br><br>
                <div class="text-center bg-light text-dark">
-                 <h3>Former Players</h3>
+                 <h3>Notable Alumni</h3>
                </div>
 
                 <hr>
                 <br>
 
-                <div class="row container-fluid bg-3">
-                  <div class="col-sm-12" id="blogs">
+                <div class="row container-fluid bg-3" class="imgContainer">
+                  <div id="blogs">
                     
                   </div>
 
@@ -196,35 +221,35 @@
         
     }
 
-    $("#main-image").change(function(){
+    $("#Notable-image").change(function(){
         previewImage(this);
     });
 
     $("#save-blog").click(function(){
-        $("#main-desc").removeClass("is-invalid");
-        $("#main-image").removeClass("is-invalid");
+        $("#Notable-desc").removeClass("is-invalid");
+        $("#Notable-image").removeClass("is-invalid");
 
-        var desc = $("#main-desc").val();
-        var picture = $("#main-image").prop("files")[0];
+        var desc = $("#Notable-desc").val();
+        var picture = $("#Notable-image").prop("files")[0];
 
         if(!desc){
-            $("#main-desc").addClass("is-invalid");
+            $("#Notable-desc").addClass("is-invalid");
             return;
         }
 
         if(picture == null){
-            $("#main-image").addClass("is-invalid");
+            $("#Notable-image").addClass("is-invalid");
             return;
         }
 
         if($.inArray(picture["type"], validImagetypes)<0){
-            $("#main-image").addClass("is-invalid");
+            $("#Notable-image").addClass("is-invalid");
             return;
         }
 
 
             // upload and save to firebase storage and firebase DB
-        var databaseRef = firebase.database().ref().child("Images");
+        var databaseRef = firebase.database().ref().child("Notable_Images");
 
         databaseRef.once("value").then(function(snapshot){
         
@@ -254,13 +279,6 @@
           function complete(){
             uploadTask.snapshot.ref.getDownloadURL().then(function(downloadUrl){
               var time = new Date();
-
-              var options = {
-                weekday: "long",
-                month: "long",
-                day: "2-digits",
-                year: "numeric",
-              };
 
               var picData = {
                 
@@ -314,24 +332,31 @@
 
     //***************** Retreive and display data from Firebase ***********
 
-    var dbPics = firebase.database().ref().child("Images").orderByChild("counter");
+    var dbPics = firebase.database().ref().child("Notable_Images").orderByChild("counter");
 
     dbPics.on("value", function(pics){
       if(pics.exists()){
         var picsHtml = "";
         
         pics.forEach(function(singlePic){
-          counter = counter + 1;
+           counter = counter + 1;
           
-          picsHtml += "<div class = 'jumbotron bg-light text-dark border border-dark'>";
+          picsHtml += "<div class = 'imgContainer' jumbotron bg-light border border-dark'>";
             
-            picsHtml += "<div> <img width= '800px' height = '450px' src = '";
+            
+            picsHtml += "<div> <img class='center-block' width= '300px' height = '175px' src = '";
               picsHtml += singlePic.val().image;
             picsHtml += "'/></div> <br>";
             
             picsHtml += "<div style = 'text-center: justify; color: black;'>";
               picsHtml += singlePic.val().desc;
             picsHtml += "</div> <br>";
+
+            picsHtml += "<div class='form-group' style = 'text-center: justify; color: black;'>";
+              picsHtml += "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>Update Description</button>";
+              picsHtml += "<button class = 'form-control btn btn-light bg-dark text-white' onclick=deleteImage('"+singlePic.key+"')>Delete</button>";
+            picsHtml += "</div> <br>";
+
           picsHtml += "</div>";
         });
 
@@ -342,11 +367,38 @@
 
     });
 
+    function deleteImage(key){
+      var deleteRef = firebase.database().ref().child("Notable_Images").child(key);
+
+      return deleteRef.remove()
+      .then(function() {
+        console.log("Success");
+      })
+      
+      .catch(function() {
+        console.log("Fail");
+      });
+    }
+
+    function updateFirebase(){
+      const fb = firebase.database().ref('Notable_Images/');
+      var New_Desc = document.getElementById('NewDesc').value;
+      var Old_Desc = document.getElementById('Notable-desc').value;
+      
+      fb.update({desc: New_Desc});
+      
+      // data = {New_Desc};
+
+      // fb.child('Notable_Images/').update(data);
+
+
+    }
+
     //***************** Ends here -- Retreive and display data from Firebase ***********
 
   </script>
 
-
+ 
   <script src="scripts/dropdown.js"></script>
   <script src="scripts/index.js"></script>
   <script src="scripts/auth.js"></script>

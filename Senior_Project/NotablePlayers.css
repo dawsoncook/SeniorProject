@@ -1,0 +1,6 @@
+/* side by side images */
+.imgContainer{
+  float: left;
+  width: 33.33%;
+  padding: 60px;
+}
