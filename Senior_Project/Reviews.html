@@ -10,9 +10,9 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"></script>
   </head>
-<body>
+  <body style="background-color:#59656F;">
   <Nav>
-    <a class="title" id="title" >Stephen Labay Hitting Lessons</a>
+    <a class="title" id="title" >Stephen Labay Baseball Lessons</a>
       <ul class ="nav-links">
        <li>
             <a href="index.html">Home</a>
@@ -113,7 +113,7 @@
                <!-- -------------After post pic------------  -->
                <hr>
                <br><br><br>
-               <div class="text-center bg-light text-dark">
+               <div class="text-center text-light">
                  <h3>Reviews</h3>
                </div>
 
@@ -255,13 +255,6 @@
             uploadTask.snapshot.ref.getDownloadURL().then(function(downloadUrl){
               var time = new Date();
 
-            //   var options = {
-            //     weekday: "long",
-            //     month: "long",
-            //     day: "2-digits",
-            //     year: "numeric",
-            //   };
-
               var picData = {
                 
                 "image": downloadUrl,
@@ -335,7 +328,8 @@
             picsHtml += "</div> <br>";
 
             picsHtml += "<div class='form-group' style = 'text-center: justify; color: black;'>";
-              picsHtml += "<button class = 'form-control btn btn-light bg-dark text-white' onclick=deleteImage('"+singlePic.key+"')>Delete</button>";
+              picsHtml += "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>Update Description</button>";
+              picsHtml += "<button type='button' class='btn btn-danger' onclick=deleteImage('"+singlePic.key+"')>Delete</button>";
             picsHtml += "</div> <br>";
 
           picsHtml += "</div>";
@@ -369,7 +363,6 @@
   <script src="scripts/dropdown.js"></script>
   <script src="scripts/index.js"></script>
   <script src="scripts/auth.js"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
