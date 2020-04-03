@@ -61,7 +61,7 @@
           <label for="login-password">Your Password</label>
           <input type="password" id="login-password" required />
          </div>
-         <button id="btnSave" type="submit" class="btn btn-success" data-dismiss="modal">Login</button>
+         <button id="btnSave" type="submit" class="btn btn-primary" data-dismiss="modal">Login</button>
        </form>
      </div>
    </div>
@@ -93,7 +93,7 @@
   <div class="col-lg-12">
     <div class="container" id="container">
            <!-----------post pic starts -------------->
-      <div class="jumbotron bg-dark" style="margin-top: 15px;">
+      <div class="jumbotron bg-dark logged-in" style="margin-top: 15px;">
         <script>
           var counter = 0;
         </script>
@@ -135,8 +135,8 @@
                <!---------------- Post pic ends----------------- -->
 
                <!-- -------------After post pic------------  -->
-               <hr>
-               <br><br><br>
+               
+               <br><br>
                <div class="text-center text-light">
                  <h3>Weekly Lessons</h3>
                </div>
@@ -148,8 +148,13 @@
                   <div id="blogs">
                     
                   </div>
+                  
+           
 
-                </div>
+                  
+                  
+
+                 </div>
 
                 <br>
 
@@ -204,6 +209,8 @@
     // var validImagetypes = ["image/gif", "image/jpeg", "image/png", "video/MOV"];
     $("#selected-image").hide();
 
+    
+    //Preview Image in form
     function previewImage(image_pic){
       if(image_pic.files && image_pic.files[0]){
         
@@ -247,7 +254,7 @@
         // }
 
 
-            // upload and save to firebase storage and firebase DB
+        // upload and save to firebase storage and firebase DB
         var databaseRef = firebase.database().ref().child("Weekly_Vids");
 
         databaseRef.once("value").then(function(snapshot){
@@ -321,6 +328,7 @@
     });
 
     
+    //Resets upload form
     function resetForm(){
       
       $("#main-form")[0].reset();
@@ -328,7 +336,7 @@
       $("#upload-progress").html("done");
 
     }
-
+    
     //***************** Retreive and display data from Firebase ***********
 
     var dbPics = firebase.database().ref().child("Weekly_Vids").orderByChild("counter");
@@ -337,35 +345,36 @@
       if(pics.exists()){
         var picsHtml = "";
         
+        
         pics.forEach(function(singlePic){
            counter = counter + 1;
-          
-          picsHtml += "<div class = 'jumbotron bg-light border border-dark'>";
-            
             
             picsHtml += "<div> <img class='center-block' width= '800px' height = '500px' src = '";
               picsHtml += singlePic.val().image;
             picsHtml += "'/></div> <br>";
             
-            picsHtml += "<div style = 'text-center: justify; color: black;'>";
+            picsHtml += "<div style = 'text-center: justify; color: white;'>";
               picsHtml += singlePic.val().desc;
-            picsHtml += "</div> <br>";
+            picsHtml += "</div>";
 
-            picsHtml += "<div class='form-group' style = 'text-center: justify; color: black;'>";
-              picsHtml += "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>Update Description</button>";
-              picsHtml += "<button type='button' class='btn btn-danger' onclick=deleteImage('"+singlePic.key+"')>Delete</button>";
+            picsHtml += "<div class = 'form-group' style = 'text-center: justify; color: black;'>";
+              picsHtml += "<button class='btn btn-primary logged-in' data-toggle='modal' data-target='#exampleModal'>Update Description</button>";
+              picsHtml += "<button class='btn btn-danger logged-in' onclick=deleteImage('"+singlePic.key+"')>Delete</button>";
             picsHtml += "</div> <br>";
 
           picsHtml += "</div>";
         });
 
         $("#blogs").html(picsHtml);
+        setupUI(firebase.auth().currentUser);
 
       }
 
 
     });
 
+    
+    //delete from firebase
     function deleteImage(key){
       var deleteRef = firebase.database().ref().child("Weekly_Vids").child(key);
 
@@ -379,6 +388,8 @@
       });
     }
 
+    
+    //Update Firebase
     function updateFirebase(){
       const fb = firebase.database().ref('Weekly_Vids/');
       var New_Desc = document.getElementById('NewDesc').value;

@@ -1,8 +1,8 @@
 //checks class for logged-in and logged-out and displays accordingly
-const loggedOutLinks = document.querySelectorAll('.logged-out');
-const loggedInLinks = document.querySelectorAll('.logged-in');
-
 const setupUI = (user) => {
+  const loggedOutLinks = document.querySelectorAll('.logged-out');
+  const loggedInLinks = document.querySelectorAll('.logged-in');
+  
   if(user){
     loggedInLinks.forEach(item => item.style.display = 'block');
     loggedOutLinks.forEach(item => item.style.display = 'none');
