@@ -4,94 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="index.CSS">
-    <link rel="stylesheet" href="login.CSS">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="NotablePlayers.css">
+    <link rel="stylesheet" href="Test.CSS">
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"></script>
   </head>
-  
-  
-  <body style="background-color:#59656F;">
-  <Nav>
-    <a class="title" id="title" >Stephen Labay Baseball Lessons</a>
-      <ul class ="nav-links">
-       <li>
-            <a href="index.html">Home</a>
-        </li>
-        
-        <li>
-            <a href="Schedule_Lesson.html">Schedule a Lesson</a>
-        </li>
-        
-        <li>
-          <a href="Weekly_Lessons.html">Weekly Lessons</a>
-        </li>
-        
-       <li>
-          <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Former Players</button>
-              <div id="myDropdown" class="dropdown-content">
-                <a href="Reviews.html">Reviews</a>
-                <a href="Notable_Players.html">Notable Alumni</a>
-              </div>
-            </div>
-         </li>
-          
-        <li class="logged-out" style="display: none;">
-          <a href="#" id="loginbtn" class="modal-trigger" data-target="modal-login">login</a>
-         </li>
-             
-        <li class="logged-in" style="display: none;"> 
-          <a href="#" id="logout">logout</a> 
-           </li>
-         
-        </ul>
-        
-    </Nav>
+  <body>
 
-  <div id="modal-login" class="modal">
-    <div class="modal-content">
-     <span class="close">&times;</span>
-       <h4>Login</h4>
-       <form id="login-form">
-         <div class="input-field">
-          <label for="login-email">Email Address</label>
-          <input type="email" id="login-email" required />
-         </div>
-         <div class="input-field">
-          <label for="login-password">Your Password</label>
-          <input type="password" id="login-password" required />
-         </div>
-         <button id="btnSave" type="submit" class="btn btn-primary" data-dismiss="modal">Login</button>
-       </form>
-     </div>
-   </div>
-   
+  <!-- Navbar -->
+<div class="w3-top">
+    <div class="w3-bar w3-blue w3-card w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-blue" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="Test.html" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+      <a href="Test_Former_Players.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Former Players</a>
+      <a href="Test_Weekly_Lessons.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Weekly Lessons</a>
+      <a href="#" class="logged-out w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" id="loginbtn" onclick="document.getElementById('modal-login').style.display='block'">Login</a>
+      <a href="#" class="logged-in w3-bar-item w3-button w3-padding-large" id="logout" style="display: none;">Logout</a>
+    </div>
   
-<!-- Edit Modal HTML -->
-<div id="editDescModal" class="modal fade" data-backdrop="static" data-keyboard="false">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form id="edit-Desc-form">
-        <div class="modal-header">
-          <h4 class="modal-title">Edit Description</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label>Update</label>
-            <input type="text" id="player-desc" class="form-control" required>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
-          <input type="submit" class="btn btn-info" value="Save">
-        </div>
-      </form>
+    <!-- Navbar on small screens -->
+    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+      <a href="Test.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
+      <a href="Test_Former_Players.html" class="w3-bar-item w3-button w3-padding-large">Former Players</a>
+      <a href="Test_Weekly_Lessons.html" class="w3-bar-item w3-button w3-padding-large">Weekly Lessons</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large" id="loginbtn" onclick="document.getElementById('modal-login').style.display='block'">Login</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large" id="logout" style="display: none;">Logout</a>
     </div>
   </div>
+  
+  <!-- Header -->
+  <header class="w3-container w3-blue w3-center" style="padding:128px 16px">
+    <h1 class="w3-margin w3-jumbo">Stephen Labay Baseball Lessons</h1>
+    <p class="w3-xlarge">Accomplished players Stephen has instructed</p>
+    <button type="button" onclick="document.getElementById('id01').style.display='block'" class="w3-button" style="padding: 20px; font-size: 20px; background-color: black; margin-top: 20px;" data-toggle="modal">Schedule Here!</button>
+  </header>
+
+  <!-- login modal -->
+<div id="modal-login" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+        <div class="w3-center"><br>
+            <span onclick="document.getElementById('modal-login').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+          </div>
+          <form class="w3-container" id="login-form">
+            <div class="w3-section">
+              <label><b>Username</b></label>
+              <input class="w3-input w3-border w3-margin-bottom" id="login-email" type="text" placeholder="Enter Username" name="usrname" required>
+              <label><b>Password</b></label>
+              <input class="w3-input w3-border" id="login-password" type="password" placeholder="Enter Password" name="psw" required>
+              <button class="w3-button w3-block w3-blue w3-section w3-padding" id="btnSave" type="submit">Login</button>
+            </div>
+          </form>
+    </div>
 </div>
+   
+  
+<!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="text" id="NewDesc" placeholder="Description" required />
+         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" onclick="updateFirebase()" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
  
   <div class="col-lg-12">
     <div class="container" id="container">
@@ -103,13 +93,13 @@
         <div class="container text-center">
           <form id="main-form">
             <div class="form-group">
-              <textarea name="text" rows="2" placeholder="caption" class="form-control" id="Weekly-desc"></textarea>
+              <textarea name="text" rows="2" placeholder="caption" class="form-control" id="Notable-desc"></textarea>
                 <div class="invalid-feedback">
                    please write description
                   </div>
               </div>
               <div class="form-group">
-                <input type="file" class="form-control" id="Weekly-image" />
+                <input type="file" class="form-control" id="Notable-image" />
                   <div class="invalid-feedback">
                     please choose valid pic
                     </div>
@@ -138,10 +128,9 @@
                <!---------------- Post pic ends----------------- -->
 
                <!-- -------------After post pic------------  -->
-               
                <br><br>
-               <div class="text-center text-light">
-                 <h3>Weekly Lessons</h3>
+               <br><div class="text-center text-dark">
+                 <h3>Former Players</h3>
                </div>
 
                 <hr>
@@ -151,11 +140,10 @@
                   <div id="blogs">
                     
                   </div>
-                  </div>
+
+                </div>
 
                 <br>
-
-                
 
 
                <!-- -----------after post pic area ends------------------ -->
@@ -168,6 +156,7 @@
       </div>
    </div>
    
+
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   
@@ -202,10 +191,11 @@
     const db = firebase.firestore();
   
   </script>
+  
 
   <script>
 
-    // var validImagetypes = ["image/gif", "image/jpeg", "image/png", "video/MOV"];
+    var validImagetypes = ["image/gif", "image/jpeg", "image/png"];
     $("#selected-image").hide();
 
     
@@ -226,39 +216,38 @@
         
     }
 
-    $("#Weekly-image").change(function(){
+    $("#Notable-image").change(function(){
         previewImage(this);
     });
 
     $("#save-blog").click(function(){
-        $("#Weekly-desc").removeClass("is-invalid");
-        $("#Weekly-image").removeClass("is-invalid");
+        $("#Notable-desc").removeClass("is-invalid");
+        $("#Notable-image").removeClass("is-invalid");
 
-        var desc = $("#Weekly-desc").val();
-        var picture = $("#Weekly-image").prop("files")[0];
+        var desc = $("#Notable-desc").val();
+        var picture = $("#Notable-image").prop("files")[0];
 
         if(!desc){
-            $("#Weekly-desc").addClass("is-invalid");
+            $("#Notable-desc").addClass("is-invalid");
             return;
         }
 
         if(picture == null){
-            $("#Weekly-image").addClass("is-invalid");
+            $("#Notable-image").addClass("is-invalid");
             return;
         }
 
-        // if($.inArray(picture["type"], validImagetypes)<0){
-        //     $("#Weekly-image").addClass("is-invalid");
-        //     return;
-        // }
+        if($.inArray(picture["type"], validImagetypes)<0){
+            $("#Notable-image").addClass("is-invalid");
+            return;
+        }
 
 
-        // upload and save to firebase storage and firebase DB
-        var databaseRef = firebase.database().ref().child("Weekly_Vids");
+            // upload and save to firebase storage and firebase DB
+        var databaseRef = firebase.database().ref().child("Notable_Images");
 
         databaseRef.once("value").then(function(snapshot){
         
-          //Store image by name. Add date and time so image doesn't get replaced if has same name
           var name = picture["name"];
           var dateStr = new Date().getTime();
           var fileCompleteName = name + "_" + dateStr;
@@ -323,12 +312,10 @@
         );
 
       });
-    // upload and save to firebase storage and firebase DB
 
     });
 
     
-    //Resets upload form
     function resetForm(){
       
       $("#main-form")[0].reset();
@@ -336,30 +323,32 @@
       $("#upload-progress").html("done");
 
     }
-    
+
     //***************** Retreive and display data from Firebase ***********
 
-    var dbPics = firebase.database().ref().child("Weekly_Vids").orderByChild("counter");
+    var dbPics = firebase.database().ref().child("Notable_Images").orderByChild("counter");
 
     dbPics.on("value", function(pics){
       if(pics.exists()){
         var picsHtml = "";
         
-        
         pics.forEach(function(singlePic){
            counter = counter + 1;
+          
+          picsHtml += "<div class = 'imgContainer' jumbotron bg-light border border-dark'>";
             
-            picsHtml += "<div> <img class='center-block' width= '800px' height = '500px' src = '";
+            
+            picsHtml += "<div> <img class='center-block' width= '300px' height = '175px' src = '";
               picsHtml += singlePic.val().image;
             picsHtml += "'/></div> <br>";
             
-            picsHtml += "<div style = 'text-center: justify; color: white;'>";
+            picsHtml += "<div style = 'text-center: justify; color: black;'>";
               picsHtml += singlePic.val().desc;
-            picsHtml += "</div>";
+            picsHtml += "</div> <br>";
 
-            picsHtml += "<div class = 'form-group' style = 'text-center: justify; color: black;'>";
-              picsHtml += "<button class='btn btn-primary logged-in' data-toggle='modal' data-target='#editDescModal'>Update Description</button>";
-              picsHtml += "<button class='btn btn-danger logged-in' onclick=deleteImage('"+singlePic.key+"')>Delete</button>";
+            picsHtml += "<div class='form-group' style = 'text-center: justify; color: black;'>";
+              picsHtml += "<button type='button' class='btn btn-primary logged-in' style ='width: 200px; position: relative; left: 50px;' data-toggle='modal' data-target='#exampleModal'>Update Description</button>";
+              picsHtml += "<button type='button' class='btn btn-danger logged-in' style ='margin: 5px; width: 200px; position: relative; left: 45px;' onclick=deleteImage('"+singlePic.key+"')>Delete</button>";
             picsHtml += "</div> <br>";
 
           picsHtml += "</div>";
@@ -374,9 +363,9 @@
     });
 
     
-    //delete from firebase
+    //Delete from Firebase
     function deleteImage(key){
-      var deleteRef = firebase.database().ref().child("Weekly_Vids").child(key);
+      var deleteRef = firebase.database().ref().child("Notable_Images").child(key);
 
       return deleteRef.remove()
       .then(function() {
@@ -389,19 +378,27 @@
     }
 
     
-    //Update Firebase
+    //Update from Firebase
     function updateFirebase(){
-   
+      const fb = firebase.database().ref('Notable_Images/');
+      var New_Desc = document.getElementById('NewDesc').value;
+      var Old_Desc = document.getElementById('Notable-desc').value;
       
-  
+      fb.update({desc: New_Desc});
+      
+      // data = {New_Desc};
+
+      // fb.child('Notable_Images/').update(data);
+
+
     }
 
     //***************** Ends here -- Retreive and display data from Firebase ***********
 
   </script>
 
- 
-  <script src="scripts/dropdown.js"></script>
+
+  <script src="scripts/Test.js"></script>
   <script src="scripts/index.js"></script>
   <script src="scripts/auth.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
