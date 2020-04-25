@@ -1,4 +1,4 @@
-//listen for auth status changes
+//listen for auth status changes testing purposes
 auth.onAuthStateChanged(user => {
     console.log(user)
     if (user){
@@ -10,19 +10,25 @@ auth.onAuthStateChanged(user => {
     }
 })
 
-//logout method
-const logout = document.querySelector('#logout');
-logout.addEventListener('click', (e) => {
-    e.preventDefault();
-    auth.signOut()
-});
-
-
+//checks class for logged-in and logged-out and displays accordingly
+const setupUI = (user) => {
+    const loggedOutLinks = document.querySelectorAll('.logged-out');
+    const loggedInLinks = document.querySelectorAll('.logged-in');
+    
+    if(user){
+      loggedInLinks.forEach(item => item.style.display = 'block');
+      loggedOutLinks.forEach(item => item.style.display = 'none');
+  
+    }else{
+      loggedInLinks.forEach(item => item.style.display = 'none');
+      loggedOutLinks.forEach(item => item.style.display = 'block');
+    }
+  }
 
 //login method
 const loginForm = document.querySelector('#login-form');
 loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+    e.preventDefault(); //prevents page reload
 
     //get user info
     const email = loginForm['login-email'].value;
@@ -37,4 +43,15 @@ loginForm.addEventListener('submit', (e) => {
 
 })
 
-//need to clear modal on close and alert id wrong email
+  //logout method
+const logout = document.querySelector('#logout');
+logout.addEventListener('click', (e) => {
+    e.preventDefault();
+    auth.signOut()
+});
+
+
+
+
+  
+  

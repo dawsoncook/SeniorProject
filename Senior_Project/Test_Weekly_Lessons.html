@@ -1,68 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="index.CSS">
-    <link rel="stylesheet" href="login.CSS">
-    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="Test.CSS">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"></script>
-  </head>
-  
-  <body>
+<title>Stephen Labay Baseball</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"></script>
+<link rel="stylesheet" href="Test.CSS">
+<body style="background-color: lightgray;">
 
-    <!-- Navbar -->
-<div class="w3-top">
-  <div class="w3-bar w3-blue w3-card w3-left-align w3-large">
-    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-blue" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="Test.html" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-    <a href="Test_Former_Players.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Former Players</a>
-    <a href="Test_Weekly_Lessons.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Weekly Lessons</a>
-    <a href="#" class="logged-out w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" id="loginbtn" onclick="document.getElementById('modal-login').style.display='block'">Login</a>
-    <a href="#" class="logged-in w3-bar-item w3-button w3-padding-large" id="logout" style="display: none;">Logout</a>
+<!-- Navbar -->
+<div class="w3-top" style="color: white;">
+  <div class="elements w3-bar w3-card">
+    <a class="w3-bar-item button w3-hide-medium w3-hide-large w3-hover-white" style="float: right;background-color:#0099ff; color: white;" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="Test.html" class="w3-bar-item button button" style="background-color: white; color: black;">Home</a>
+    <a href="Test_Former_Players.html" class="w3-bar-item button w3-hide-small ">Former Players</a>
+    <a href="Test_Weekly_Lessons.html" class="w3-bar-item button w3-hide-small">Weekly Lessons</a>
+    <a href="#" class="logged-out w3-bar-item button w3-hide-small" id="loginbtn" onclick="document.getElementById('modal-login').style.display='block'">Login</a>
+    <a href="#" class="logged-in w3-bar-item button w3-hide-small" id="logout" style="display: none;">Logout</a>
   </div>
 
-    <!-- Navbar on small screens -->
-    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-      <a href="Test.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
-      <a href="Test_Former_Players.html" class="w3-bar-item w3-button w3-padding-large">Former Players</a>
-      <a href="Test_Weekly_Lessons.html" class="w3-bar-item w3-button w3-padding-large">Weekly Lessons</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding-large" id="loginbtn" onclick="document.getElementById('modal-login').style.display='block'">Login</a>
-      <a href="#" class="w3-bar-item w3-button w3-padding-large" id="logout" style="display: none;">Logout</a>
-    </div>
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="Test.html" class="w3-bar-item button">Home</a>
+    <a href="Test_Former_Players.html" class="w3-bar-item button ">Former Players</a>
+    <a href="Test_Weekly_Lessons.html" class="w3-bar-item button ">Weekly Lessons</a>
+    <a href="#" class="logged-out w3-bar-item button " id="loginbtn" onclick="document.getElementById('modal-login').style.display='block'">Login</a>
+    <a href="#" class="logged-in w3-bar-item button " id="logout" style="display: none;">Logout</a>
   </div>
+</div>
 
-    <!-- Header -->
-<header class="w3-container w3-blue w3-center" style="padding:128px 16px">
-  <h1 class="w3-margin w3-jumbo">Stephen Labay Baseball Lessons</h1>
-  <p class="w3-xlarge">Video of players working out with Stephen</p>
-  <button type="button" onclick="document.getElementById('id01').style.display='block'" class="w3-button" style="padding: 20px; font-size: 20px; background-color: black; margin-top: 20px;" data-toggle="modal">Schedule Here!</button>
+<!-- Header -->
+<header class="w3-container" style="text-align: center; padding:128px 16px; background-color: #0099ff;">
+  <h1 style="color: white; font-size: 50px; margin-bottom: 30px;">Stephen Labay Baseball Lessons</h1>
+  <p style="color: white; font-size: 25px;">Video of players during lessons</p>
+  <button type="button" onclick="document.getElementById('id01').style.display='block'" class="w3-button" style="padding: 20px; font-size: 20px; background-color: black; margin-top: 20px; color: white;" data-toggle="modal">Schedule a Lesson!</button>
 </header>
 
 
 <!-- login modal -->
 <div id="modal-login" class="w3-modal">
-    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
-        <div class="w3-center"><br>
-            <span onclick="document.getElementById('modal-login').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+  <div class="w3-modal-content w3-card-4 w3-animate-zoom" >
+      <div class="w3-center"><br>
+          <span onclick="document.getElementById('modal-login').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+        </div>
+        <form class="w3-container" id="login-form">
+          <div class="w3-section">
+            <label><b>Username</b></label>
+            <input class="w3-input w3-border w3-margin-bottom" id="login-email" type="text" placeholder="Enter Username" name="usrname" required>
+            <label><b>Password</b></label>
+            <input class="w3-input w3-border" id="login-password" type="password" placeholder="Enter Password" name="psw" required>
+            <button class="w3-button w3-block w3-blue w3-section w3-padding" id="btnSave" type="submit">Login</button>
           </div>
-          <form class="w3-container" id="login-form">
-            <div class="w3-section">
-              <label><b>Username</b></label>
-              <input class="w3-input w3-border w3-margin-bottom" id="login-email" type="text" placeholder="Enter Username" name="usrname" required>
-              <label><b>Password</b></label>
-              <input class="w3-input w3-border" id="login-password" type="password" placeholder="Enter Password" name="psw" required>
-              <button class="w3-button w3-block w3-blue w3-section w3-padding" id="btnSave" type="submit">Login</button>
-            </div>
-          </form>
+        </form>
+  </div>
+</div>
+
+<!-- Schedule Lesson Modal -->
+<div id="id01" class="w3-modal">
+  <div class="w3-modal-content">
+    <header class="w3-container" style="background-color: #0099ff;"> 
+      <span onclick="document.getElementById('id01').style.display='none'" 
+      class="w3-button w3-display-topright">&times;</span>
+      <h2>Schedule a Lesson!</h2>
+    </header>
+    <div class="w3-container">
+      <p>Phone number: 512-940-5604</p>
+      <p>Email: slabay@me.com</p>
     </div>
+    <footer class="w3-container" style="background-color: #0099ff;">
+      <p>Please text or email Stephen for more information</p>
+    </footer>
+  </div>
+</div>
 </div>
    
-  
 <!-- Edit Modal HTML -->
 <div id="editDescModal" class="modal fade" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog">
@@ -119,7 +134,7 @@
 
               </div>
                 <div class="form-group">
-                  <button id="save-blog" type="button" style="width: 150px; height: 60px;" class="btn btn-light bg-light text-dark">Submit</button>
+                  <button id="save-posts" type="button" style="width: 150px; height: 60px;" class="btn btn-light bg-light text-dark">Submit</button>
                   </div>
             </form>
                    <div id="result">
@@ -142,7 +157,7 @@
                 <br>
 
                 <div class="row container-fluid bg-3" class="imgContainer">
-                  <div id="blogs">
+                  <div id="posts">
                     
                   </div>
                   </div>
@@ -224,7 +239,7 @@
         previewImage(this);
     });
 
-    $("#save-blog").click(function(){
+    $("#save-posts").click(function(){
         $("#Weekly-desc").removeClass("is-invalid");
         $("#Weekly-image").removeClass("is-invalid");
 
@@ -252,9 +267,9 @@
           var fileCompleteName = name + "_" + dateStr;
 
           var storageRef = firebase.storage().ref("Pics");
-          var blogStorageRef = storageRef.child(fileCompleteName);
+          var postStorageRef = storageRef.child(fileCompleteName);
 
-          var uploadTask = blogStorageRef.put(picture);
+          var uploadTask = postStorageRef.put(picture);
 
           uploadTask.on("state_changed", 
             
@@ -346,14 +361,14 @@
             picsHtml += "</div><br>";
 
             picsHtml += "<div class = 'form-group' style = 'text-center: justify; color: black; position: relative; left: 425px; width: 300px;'>";
-              picsHtml += "<button class='btn btn-primary logged-in' data-toggle='modal' data-target='#editDescModal'>Update Description</button>";
-              picsHtml += "<button class='btn btn-danger logged-in' onclick=deleteImage('"+singlePic.key+"')>Delete</button>";
+              picsHtml += "<button class='btn btn-primary logged-in' style='width: 200px; position: relative; left: 50px;' data-toggle='modal' data-target='#editDescModal'>Update Description</button>";
+              picsHtml += "<button class='btn btn-danger logged-in' style='width: 200px; position: relative; left: 45px; margin: 5px' onclick=deleteImage('"+singlePic.key+"')>Delete</button>";
             picsHtml += "</div> <br>";
 
           picsHtml += "</div>";
         });
 
-        $("#blogs").html(picsHtml);
+        $("#posts").html(picsHtml);
         setupUI(firebase.auth().currentUser);
 
       }
@@ -388,8 +403,10 @@
 
   </script>
   
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="scripts/Test.js"></script>
-  <script src="scripts/index.js"></script>
   <script src="scripts/auth.js"></script>
   </body>
 </html>

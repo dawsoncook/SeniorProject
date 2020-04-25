@@ -13,46 +13,48 @@
 <body>
 
 <!-- Navbar -->
-<div class="w3-top">
-  <div class="w3-bar w3-blue w3-card w3-left-align w3-large">
-    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-blue" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="Test.html" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-    <a href="Test_Former_Players.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Former Players</a>
-    <a href="Test_Weekly_Lessons.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Weekly Lessons</a>
-    <a href="#" class="logged-out w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" id="loginbtn" onclick="document.getElementById('modal-login').style.display='block'">Login</a>
-    <a href="#" class="logged-in w3-bar-item w3-button w3-padding-large" id="logout" style="display: none;">Logout</a>
+<div style="color: white;">
+  <div class="elements w3-bar w3-card">
+    <a class="w3-hide-medium w3-hide-large" style="float: right;background-color:#0099ff; color: white; padding: 5px;" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="Test.html" class="w3-bar-item" style="background-color: white; color: black;">Home</a>
+    <div class="nav-ele">
+      <a href="Test_Former_Players.html" class="w3-bar-item">Former Players</a>
+      <a href="Test_Weekly_Lessons.html" class="w3-bar-item">Weekly Lessons</a>
+      <a href="#" class="logged-out w3-bar-item" id="loginbtn" onclick="document.getElementById('modal-login').style.display='block'">Login</a>
+      <a href="#" class="logged-in w3-bar-item" id="logout" style="display: none;">Logout</a>
   </div>
+</div>
 
   <!-- Navbar on small screens -->
   <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="Test.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
-    <a href="Test_Former_Players.html" class="w3-bar-item w3-button w3-padding-large">Former Players</a>
-    <a href="Test_Weekly_Lessons.html" class="w3-bar-item w3-button w3-padding-large">Weekly Lessons</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large" id="loginbtn" onclick="document.getElementById('modal-login').style.display='block'">Login</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large" id="logout" style="display: none;">Logout</a>
+    <a href="Test.html" class="w3-bar-item">Home</a>
+    <a href="Test_Former_Players.html" class="w3-bar-item">Former Players</a>
+    <a href="Test_Weekly_Lessons.html" class="w3-bar-item">Weekly Lessons</a>
+    <a href="#" class="logged-out w3-bar-item" id="loginbtn" onclick="document.getElementById('modal-login').style.display='block'">Login</a>
+    <a href="#" class="logged-in w3-bar-item" id="logout" style="display: none;">Logout</a>
   </div>
 </div>
 
 <!-- Header -->
-<header class="w3-container w3-blue w3-center" style="padding:128px 16px">
-  <h1 class="w3-margin w3-jumbo">Stephen Labay Baseball Lessons</h1>
-  <p class="w3-xlarge">Hitting or Pitching Lessons</p>
-  <button type="button" onclick="document.getElementById('id01').style.display='block'" class="w3-button" style="padding: 20px; font-size: 20px; background-color: black; margin-top: 20px;" data-toggle="modal">Schedule Here!</button>
+<header class="w3-container" style="text-align: center; padding:128px 16px; background-color: #0099ff;">
+  <h1 style="color: white; font-size: 60px; margin-bottom: 30px;">Stephen Labay Baseball Lessons</h1>
+  <p style="color: white; font-size: 25px;">Hitting and Pitching Lessons</p>
+  <button type="button" onclick="document.getElementById('id01').style.display='block'" class="w3-button" style="padding: 20px; font-size: 20px; background-color: black; margin-top: 20px; color: white;" data-toggle="modal">Schedule Here!</button>
 </header>
 
 <!-- Schedule Lesson Modal -->
 <div id="id01" class="w3-modal">
     <div class="w3-modal-content">
-      <header class="w3-container" style="background-color: lightblue;"> 
+      <header class="w3-container" style="background-color: #0099ff;"> 
         <span onclick="document.getElementById('id01').style.display='none'" 
         class="w3-button w3-display-topright">&times;</span>
-        <h2>Modal Header</h2>
+        <h2>Schedule a Lesson!</h2>
       </header>
       <div class="w3-container">
         <p>Phone number: 512-940-5604</p>
         <p>Email: slabay@me.com</p>
       </div>
-      <footer class="w3-container" style="background-color: lightblue;">
+      <footer class="w3-container" style="background-color: #0099ff;">
         <p>Please text or email Stephen for more information</p>
       </footer>
     </div>
@@ -77,6 +79,32 @@
           </form>
     </div>
 </div>
+
+<!-- Edit Modal HTML -->
+<div id="editDescModal" class="modal" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="edit-Desc-form">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Description</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Update</label>
+            <input type="hidden" class="edit-userid">
+            <input type="text" id="Updated-desc" class="form-control" data-key='UpdatedDesc' required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+          <input type="submit" class="btn btn-info" id="SaveUpdate" value="Save">
+        </div>
+      </form>
+    </div>
+  </div>
+</div> 
+
 
 <div class="col-lg-12">
   <div class="container" id="container">
@@ -110,7 +138,7 @@
 
             </div>
               <div class="form-group">
-                <button id="save-blog" type="button" style="width: 150px; height: 60px;" class="btn btn-light bg-light text-dark">Submit</button>
+                <button id="save-post" type="button" style="width: 150px; height: 60px;" class="btn btn-light bg-light text-dark">Submit</button>
                 </div>
           </form>
                  <div id="result">
@@ -122,21 +150,8 @@
       </div>
     </div>
 
-             <!---------------- Post pic ends----------------- -->
-
-             <!-- -------------After post pic------------  -->
-             
-
-             <!-- -----------after post pic area ends------------------ -->
-
-             <!--------------- validation and post pics----------------- -->
-              
-             <!--------------- validation and post pics ends here----------------- -->
-
-
-
 <!-- First Grid -->
-<div class="w3-row-padding w3-padding-64 w3-container w3-light-grey">
+<div class="w3-row-padding w3-padding-64 w3-container" style="background-color: lightgray;">
   <div class="w3-content">
     <div class="w3-twothird">
       <h1>About Stephen</h1>
@@ -171,7 +186,7 @@
 </div>
 
 <!-- Second Grid -->
-<div class="w3-row-padding w3-light-blue w3-padding-64 w3-container">
+<div class="w3-row-padding w3-padding-64 w3-container" style="background-color: #0099ff;">
   <div class="w3-content">
     <div class="w3-third w3-center">
       
@@ -233,7 +248,7 @@
   </div>
 </div>
 
-<div class="w3-light-grey">
+<div style="background-color: lightgray;">
 <br><br>
 
 <div class="text-center text-dark" >
@@ -244,7 +259,7 @@
 <br>
 
 <div class="row container-fluid bg-3">
-  <div id="blogs">
+  <div id="posts">
                   
 </div>
 
@@ -317,7 +332,7 @@
       previewImage(this);
   });
 
-  $("#save-blog").click(function(){
+  $("#save-post").click(function(){
       $("#main-desc").removeClass("is-invalid");
       $("#main-image").removeClass("is-invalid");
 
@@ -350,9 +365,9 @@
         var fileCompleteName = name + "_" + dateStr;
 
         var storageRef = firebase.storage().ref("Pics");
-        var blogStorageRef = storageRef.child(fileCompleteName);
+        var postStorageRef = storageRef.child(fileCompleteName);
 
-        var uploadTask = blogStorageRef.put(picture);
+        var uploadTask = postStorageRef.put(picture);
 
         uploadTask.on("state_changed", 
           
@@ -370,8 +385,7 @@
         },
         function complete(){
           uploadTask.snapshot.ref.getDownloadURL().then(function(downloadUrl){
-            var time = new Date();
-
+          
             var picData = {
               
               "image": downloadUrl,
@@ -433,7 +447,7 @@
       pics.forEach(function(singlePic){
          counter = counter + 1;
         
-        picsHtml += "<div class = 'jumbotron bg-light border border-dark Reviews' style = 'margin: 25px; float: left; position: relative; left: 200px;'>";
+        picsHtml += "<div class = 'jumbotron bg-light-grey border border-dark' style = 'margin: 25px; float: left; position: relative; left: 200px;'>";
           
           
           picsHtml += "<div> <img class='center-block' style = 'margin: 5px' width= '400px' height = '250px' src = '";
@@ -445,14 +459,14 @@
           picsHtml += "</div> <br>";
 
           picsHtml += "<div class='form-group' style = 'text-center: justify; color: black;'>";
-            picsHtml += "<button type='button' style = 'margin: 5px; width: 200px; position: relative; left: 100px;' class='btn btn-primary logged-in' data-toggle='modal' data-target='#exampleModal'>Update Description</button>";
+            picsHtml += "<button type='button' style = 'margin: 5px; width: 200px; position: relative; left: 100px;' class='btn btn-primary logged-in' data-toggle='modal' data-target='#editDescModal' onclick=updateFirebase('"+singlePic.key+"')>Update Description</button>";
             picsHtml += "<button type='button' style = 'margin: 5px; width: 200px; position: relative; left: 100px;' class='btn btn-danger logged-in' onclick=deleteImage('"+singlePic.key+"')>Delete</button>";
           picsHtml += "</div> <br>";
 
         picsHtml += "</div>";
       });
 
-      $("#blogs").html(picsHtml);
+      $("#posts").html(picsHtml);
       setupUI(firebase.auth().currentUser);
 
     }
@@ -460,6 +474,72 @@
 
   });
 
+
+  function updateFirebase(key){
+    const updateRef = firebase.database().ref().child("Images").child(key);
+
+    // set data to the user field
+    const editUserInputsUI = document.querySelectorAll("#Updated-desc");
+    
+    updateRef.on("value", snap => {
+
+    for(var i = 0, len = editUserInputsUI.length; i < len; i++) {
+
+      var key = editUserInputsUI[i].getAttribute("data-key");
+          editUserInputsUI[i].value = snap.val()[key];
+}
+
+
+});
+
+  const saveBtn = document.querySelector("#SaveUpdate");
+	saveBtn.addEventListener("click", saveUserBtnClicked)
+
+  }
+
+  function saveUserBtnClicked(key) {
+ 
+    const updateRef = firebase.database().ref().child("Images").child(key);
+
+    var editedUserObject = {}
+
+    const editUserInputsUI = document.querySelectorAll("#Updated-desc");
+
+    editUserInputsUI.forEach(function(textField) {
+      let key = textField.getAttribute("data-key");
+      let value = textField.value;
+      editedUserObject[textField.getAttribute("data-key")] = textField.value
+    });
+
+
+
+    updateRef.update(editedUserObject);
+    location.reload();
+
+}
+
+//update
+// var postId = $(element).closest('div').attr('id');
+//     console.log(postId);
+//     var submit = document.getElementById("SaveUpdate");
+
+//     submit.onclick = function(){
+
+//         var postData = {
+
+//             desc: $('#Updated-desc').val(),
+            
+//         };
+      
+//         for (data in postData){
+//             if(postData[data] != null && postData[data] != 0){
+//             firebase.database().ref().child('Images/' + postId).update(postData);
+//             }
+//         }
+//             location.reload();
+  
+//     }
+// }
 
   //delete from Firebase
   function deleteImage(key){
@@ -479,9 +559,11 @@
 
 </script>
 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="scripts/Test.js"></script>
 <script src="scripts/auth.js"></script>
-<script src="scripts/index.js"></script>
 </body>
 </html>
 

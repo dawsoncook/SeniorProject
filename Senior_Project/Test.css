@@ -94,6 +94,46 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   animation-duration: 1.5s;
 }
 
+.elements{
+  font-size: 25px;
+  float: left;
+  background-color: #0099ff;
+  text-decoration: none;
+  border: none;
+  color: white;
+
+}
+
+.nav-ele > a:hover{
+  background-color: white;
+}
+
+#edit-user-module {
+  display: none;
+  position: absolute;
+  background-color: #e1e1e1;
+  border: 1px solid #999;
+  top:149px;
+  left: 160px;
+  padding: 10px;
+  width: 150px;
+}
+
+#edit-user-module form button {
+  background: #54bb7d;
+  font-size: 1em;
+  padding: 0px 10px;
+  color: white;
+  margin-top: 10px;
+}
+
+
+@media only screen and (max-width: 600px) { 
+  .nav-ele {
+    display: none;
+  }
+}
+
 
 @-webkit-keyframes fade {
   from {opacity: .4} 
