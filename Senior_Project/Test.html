@@ -476,71 +476,28 @@
 
 
   function updateFirebase(key){
-    const updateRef = firebase.database().ref().child("Images").child(key);
-
-    // set data to the user field
-    const editUserInputsUI = document.querySelectorAll("#Updated-desc");
+    var updateRef = firebase.database().ref().child("Images").child(key);
     
-    updateRef.on("value", snap => {
+    var submit = document.getElementById("SaveUpdate");
 
-    for(var i = 0, len = editUserInputsUI.length; i < len; i++) {
+    submit.onclick = function(){
 
-      var key = editUserInputsUI[i].getAttribute("data-key");
-          editUserInputsUI[i].value = snap.val()[key];
-}
+      var postData = {
 
-
-});
-
-  const saveBtn = document.querySelector("#SaveUpdate");
-	saveBtn.addEventListener("click", saveUserBtnClicked)
+        desc: $('#Updated-desc').val(),
+        
+      };
+      for (data in postData){
+            if(postData[data] != null && postData[data] != 0){
+            updateRef.update(postData);
+            }
+        }
+            location.reload();
+  
+    }
 
   }
-
-  function saveUserBtnClicked(key) {
- 
-    const updateRef = firebase.database().ref().child("Images").child(key);
-
-    var editedUserObject = {}
-
-    const editUserInputsUI = document.querySelectorAll("#Updated-desc");
-
-    editUserInputsUI.forEach(function(textField) {
-      let key = textField.getAttribute("data-key");
-      let value = textField.value;
-      editedUserObject[textField.getAttribute("data-key")] = textField.value
-    });
-
-
-
-    updateRef.update(editedUserObject);
-    location.reload();
-
-}
-
-//update
-// var postId = $(element).closest('div').attr('id');
-//     console.log(postId);
-//     var submit = document.getElementById("SaveUpdate");
-
-//     submit.onclick = function(){
-
-//         var postData = {
-
-//             desc: $('#Updated-desc').val(),
-            
-//         };
-      
-//         for (data in postData){
-//             if(postData[data] != null && postData[data] != 0){
-//             firebase.database().ref().child('Images/' + postId).update(postData);
-//             }
-//         }
-//             location.reload();
   
-//     }
-// }
-
   //delete from Firebase
   function deleteImage(key){
     var deleteRef = firebase.database().ref().child("Images").child(key);

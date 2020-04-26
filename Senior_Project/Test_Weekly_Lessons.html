@@ -13,23 +13,25 @@
 <body style="background-color: lightgray;">
 
 <!-- Navbar -->
-<div class="w3-top" style="color: white;">
+<div style="color: white;">
   <div class="elements w3-bar w3-card">
-    <a class="w3-bar-item button w3-hide-medium w3-hide-large w3-hover-white" style="float: right;background-color:#0099ff; color: white;" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="Test.html" class="w3-bar-item button button" style="background-color: white; color: black;">Home</a>
-    <a href="Test_Former_Players.html" class="w3-bar-item button w3-hide-small ">Former Players</a>
-    <a href="Test_Weekly_Lessons.html" class="w3-bar-item button w3-hide-small">Weekly Lessons</a>
-    <a href="#" class="logged-out w3-bar-item button w3-hide-small" id="loginbtn" onclick="document.getElementById('modal-login').style.display='block'">Login</a>
-    <a href="#" class="logged-in w3-bar-item button w3-hide-small" id="logout" style="display: none;">Logout</a>
+    <a class="w3-hide-medium w3-hide-large" style="float: right;background-color:#0099ff; color: white; padding: 5px;" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="Test.html" class="w3-bar-item" style="background-color: white; color: black;">Home</a>
+    <div class="nav-ele">
+      <a href="Test_Former_Players.html" class="w3-bar-item">Former Players</a>
+      <a href="Test_Weekly_Lessons.html" class="w3-bar-item">Weekly Lessons</a>
+      <a href="#" class="logged-out w3-bar-item" id="loginbtn" onclick="document.getElementById('modal-login').style.display='block'">Login</a>
+      <a href="#" class="logged-in w3-bar-item" id="logout" style="display: none;">Logout</a>
   </div>
+</div>
 
   <!-- Navbar on small screens -->
   <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="Test.html" class="w3-bar-item button">Home</a>
-    <a href="Test_Former_Players.html" class="w3-bar-item button ">Former Players</a>
-    <a href="Test_Weekly_Lessons.html" class="w3-bar-item button ">Weekly Lessons</a>
-    <a href="#" class="logged-out w3-bar-item button " id="loginbtn" onclick="document.getElementById('modal-login').style.display='block'">Login</a>
-    <a href="#" class="logged-in w3-bar-item button " id="logout" style="display: none;">Logout</a>
+    <a href="Test.html" class="w3-bar-item">Home</a>
+    <a href="Test_Former_Players.html" class="w3-bar-item">Former Players</a>
+    <a href="Test_Weekly_Lessons.html" class="w3-bar-item">Weekly Lessons</a>
+    <a href="#" class="logged-out w3-bar-item" id="loginbtn" onclick="document.getElementById('modal-login').style.display='block'">Login</a>
+    <a href="#" class="logged-in w3-bar-item" id="logout" style="display: none;">Logout</a>
   </div>
 </div>
 
@@ -79,7 +81,7 @@
 </div>
    
 <!-- Edit Modal HTML -->
-<div id="editDescModal" class="modal fade" data-backdrop="static" data-keyboard="false">
+<div id="editDescModal" class="modal" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog">
     <div class="modal-content">
       <form id="edit-Desc-form">
@@ -90,17 +92,18 @@
         <div class="modal-body">
           <div class="form-group">
             <label>Update</label>
-            <input type="text" id="player-desc" class="form-control" required>
+            <input type="hidden" class="edit-userid">
+            <input type="text" id="Updated-desc" class="form-control" data-key='UpdatedDesc' required>
           </div>
         </div>
         <div class="modal-footer">
           <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
-          <input type="submit" class="btn btn-info" value="Save">
+          <input type="submit" class="btn btn-info" id="SaveUpdate" value="Save">
         </div>
       </form>
     </div>
   </div>
-</div>
+</div> 
  
   <div class="col-lg-12">
     <div class="container" id="container">
@@ -361,7 +364,7 @@
             picsHtml += "</div><br>";
 
             picsHtml += "<div class = 'form-group' style = 'text-center: justify; color: black; position: relative; left: 425px; width: 300px;'>";
-              picsHtml += "<button class='btn btn-primary logged-in' style='width: 200px; position: relative; left: 50px;' data-toggle='modal' data-target='#editDescModal'>Update Description</button>";
+              picsHtml += "<button class='btn btn-primary logged-in' style='width: 200px; position: relative; left: 50px;' data-toggle='modal' data-target='#editDescModal' onclick=updateFirebase('"+singlePic.key+"')>Update Description</button>";
               picsHtml += "<button class='btn btn-danger logged-in' style='width: 200px; position: relative; left: 45px; margin: 5px' onclick=deleteImage('"+singlePic.key+"')>Delete</button>";
             picsHtml += "</div> <br>";
 
@@ -391,13 +394,29 @@
       });
     }
 
+    //Update
+    function updateFirebase(key){
+    var updateRef = firebase.database().ref().child("Weekly_Vids").child(key);
     
-    //Update Firebase
-    function updateFirebase(){
-   
-      
+    var submit = document.getElementById("SaveUpdate");
+
+    submit.onclick = function(){
+
+      var postData = {
+
+        desc: $('#Updated-desc').val(),
+        
+      };
+      for (data in postData){
+            if(postData[data] != null && postData[data] != 0){
+            updateRef.update(postData);
+            }
+        }
+            location.reload();
   
     }
+
+  }
 
     //***************** Ends here -- Retreive and display data from Firebase ***********
 
