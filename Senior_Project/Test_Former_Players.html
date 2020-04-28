@@ -64,21 +64,21 @@
 
 <!-- Schedule Lesson Modal -->
 <div id="id01" class="w3-modal">
-    <div class="w3-modal-content">
-      <header class="w3-container" style="background-color: lightblue;"> 
-        <span onclick="document.getElementById('id01').style.display='none'" 
-        class="w3-button w3-display-topright">&times;</span>
-        <h2>Schedule a Lesson!</h2>
-      </header>
-      <div class="w3-container">
-        <p>Phone number: 512-940-5604</p>
-        <p>Email: slabay@me.com</p>
-      </div>
-      <footer class="w3-container" style="background-color: lightblue;">
-        <p>Please text or email Stephen for more information</p>
-      </footer>
+  <div class="w3-modal-content">
+    <header class="w3-container" style="background-color: #0099ff;"> 
+      <span onclick="document.getElementById('id01').style.display='none'" 
+      class="w3-button w3-display-topright">&times;</span>
+      <h2>Schedule a Lesson!</h2>
+    </header>
+    <div class="w3-container">
+      <p>Phone number: 512-940-5604</p>
+      <p>Email: slabay@me.com</p>
     </div>
+    <footer class="w3-container" style="background-color: #0099ff;">
+      <p>Please text or email Stephen for more information</p>
+    </footer>
   </div>
+</div>
 </div>
   
 <!-- Edit Modal HTML -->
@@ -130,7 +130,7 @@
                     </div>
                 </div>
               <div class="form-group">
-                <img id="selected-image" width="500" height="150" src="#" />
+                <img id="selected-image" src="#" />
 
                 </div>
               <div class="form-group">
@@ -392,18 +392,26 @@
    function updateFirebase(key){
     var updateRef = firebase.database().ref().child("Notable_Images").child(key);
     
+    //populates modal
+    updateRef.on("value", function(snapshot) {
+        var childData = snapshot.val();
+        var key = Object.keys(childData)[1];        
+        console.log(childData[key]);
+        $(".modal-body #Updated-desc").val(childData[key]);
+    });
+
     var submit = document.getElementById("SaveUpdate");
 
     submit.onclick = function(){
 
-      var postData = {
+      var NewData = {
 
         desc: $('#Updated-desc').val(),
         
       };
-      for (data in postData){
-            if(postData[data] != null && postData[data] != 0){
-            updateRef.update(postData);
+      for (data in NewData){
+            if(NewData[data] != null && NewData[data] != 0){
+            updateRef.update(NewData);
             }
         }
             location.reload();
@@ -432,7 +440,7 @@
 
   </script>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="scripts/Test.js"></script>

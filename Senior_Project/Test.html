@@ -92,7 +92,6 @@
         <div class="modal-body">
           <div class="form-group">
             <label>Update</label>
-            <input type="hidden" class="edit-userid">
             <input type="text" id="Updated-desc" class="form-control" data-key='UpdatedDesc' required>
           </div>
         </div>
@@ -311,22 +310,22 @@
   $("#selected-image").hide();
 
   
-  //Preview the image
-  function previewImage(image_pic){
-    if(image_pic.files && image_pic.files[0]){
-      
-      var reader = new FileReader();
-      reader.onload = function(e){
-          $("#selected-image").attr('src', e.target.result);
-          $("#selected-image").fadeIn();
+   //Preview Image in form
+   function previewImage(image_pic){
+      if(image_pic.files && image_pic.files[0]){
+        
+        var reader = new FileReader();
+        reader.onload = function(e){
+            $("#selected-image").attr('src', e.target.result);
+            $("#selected-image").fadeIn();
+
+        }
+        reader.readAsDataURL(image_pic.files[0]);
 
       }
-      reader.readAsDataURL(image_pic.files[0]);
 
+        
     }
-
-      
-  }
 
   $("#main-image").change(function(){
       previewImage(this);
@@ -464,6 +463,8 @@
           picsHtml += "</div> <br>";
 
         picsHtml += "</div>";
+      
+    
       });
 
       $("#posts").html(picsHtml);
@@ -477,19 +478,27 @@
 
   function updateFirebase(key){
     var updateRef = firebase.database().ref().child("Images").child(key);
-    
+
+    //populates modal
+    updateRef.on("value", function(snapshot) {
+    var childData = snapshot.val();
+    var key = Object.keys(childData)[1];        
+    console.log(childData[key]);
+    $(".modal-body #Updated-desc").val(childData[key]);
+});
+
     var submit = document.getElementById("SaveUpdate");
 
     submit.onclick = function(){
 
-      var postData = {
+      var NewData = {
 
         desc: $('#Updated-desc').val(),
         
       };
-      for (data in postData){
-            if(postData[data] != null && postData[data] != 0){
-            updateRef.update(postData);
+      for (data in NewData){
+            if(NewData[data] != null && NewData[data] != 0){
+            updateRef.update(NewData);
             }
         }
             location.reload();
@@ -497,6 +506,7 @@
     }
 
   }
+
   
   //delete from Firebase
   function deleteImage(key){
@@ -516,7 +526,7 @@
 
 </script>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="scripts/Test.js"></script>
